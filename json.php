@@ -5,8 +5,14 @@
 */
 header('Content-type:text/json');
 
-$host = $_GET['host'];
-$port = $_GET['port'];
+$host = trim($_GET['host']);
+if(stripos($host,":") !== false){
+    $var=explode(":",$host);
+    $host=$var[0];
+    $port=$var[1];
+}else{
+    $port = $_GET['port'];
+}
 
 require_once 'ApiQuery.php';
 require_once 'ApiPing.php';
