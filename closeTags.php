@@ -6,8 +6,8 @@ function closeTags($html) {
     @preg_match_all('#</([a-z]+)>#iU', $html, $result);
     $closedtags = $result[1];
 
-    $len_opened = count($openedtags);
-    if (count($closedtags) == $len_opened) {
+    $len_opened = @count($openedtags);
+    if (@count($closedtags) == $len_opened) {
         return $html;
     }
 
